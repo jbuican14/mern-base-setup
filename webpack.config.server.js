@@ -1,18 +1,23 @@
 const path = require('path');
-const webpack = require('webpack');
+// const webpack = require('webpack');
+const webpackNodeExternals = require('webpack-node-expernals');
 const CURRENT_WORKING_DIR = process.cwd();
 
 const config = {
   name: 'server',
+  // Tell webpack the root file of our server application
   entry: [path.join(CURRENT_WORKING_DIR, './server/server.js')],
   target: 'node',
   output: {
-    path: path.join(CURRENT_WORKING_DIR, '/dist/'),
     filename: 'server.generated.js',
-    publicPath: '/dist/',
     libraryTarget: 'commonjs2',
+    path: path.join(CURRENT_WORKING_DIR, '/dist/'),
+    publicPath: '/dist/',
   },
-  externals: [nodeExternals()],
+
+  // Tell webpack to not include all package into the bundle file
+  // Readmore https://www.npmjs.com/package/webpack-node-externals
+  externals: [webpackNodeExternals()],
   module: {
     rules: [
       {
