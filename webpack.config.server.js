@@ -1,6 +1,6 @@
 const path = require('path');
 // const webpack = require('webpack');
-const webpackNodeExternals = require('webpack-node-expernals');
+const webpackNodeExternals = require('webpack-node-externals');
 const CURRENT_WORKING_DIR = process.cwd();
 
 const config = {
